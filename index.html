@@ -9,9 +9,50 @@
 </head>
 
 <body>
-  <h1>Hello World!</h1>
+  <main class="container">
+    <h1 class="title">The Odin Library</h1>
+    <section>
+      <button id="add-button" class="btn btn-outline">
+        <img src="assets/icons/add.svg" role="presentation">
+        Add Book
+      </button>
+    </section>
+  </main>
 
-  <script src="main.js"></script>
+  <dialog class="dialog" id="add-dialog">
+    <button class="close-btn" aria-label="close">
+      <img src="assets/icons/close.svg" alt="close">
+    </button>
+
+    <div class="header">
+      <p class="title">Add new book</p>
+    </div>
+    <div class="content">
+      <form>
+        <div class="field-item">
+          <label for="title">Title:</label>
+          <input required autofocus type="text" name="title" id="title">
+        </div>
+        <div class="field-item">
+          <label for="author">Author:</label>
+          <input required type="text" name="author" id="author">
+        </div>
+        <div class="field-item">
+          <label for="pages">Number of pages:</label>
+          <input required min="1" value="1" step="1" type="number" name="pages" id="pages">
+        </div>
+
+        <div>
+          <button formmethod="dialog" class="btn" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="main.js">
+  </script>
 </body>
 
 </html>
