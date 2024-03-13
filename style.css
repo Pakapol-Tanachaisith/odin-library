@@ -277,14 +277,14 @@ h1.title {
   }
 }
 
-.book-grid {
+#book-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   column-gap: 14px;
   row-gap: 24px;
 }
 
-.book-grid > p.empty {
+#book-grid + p.empty {
   display: none;
   grid-column: 1 / -1;
   text-align: center;
@@ -294,7 +294,7 @@ h1.title {
   font-family: "Nord", "Courier New", Courier, monospace;
 }
 
-.book-grid > p.empty:first-child {
+#book-grid:empty + p.empty {
   display: block;
 }
 
