@@ -32,22 +32,40 @@ addForm.addEventListener("submit", (event) => {
 });
 
 // Book Logic
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.hasRead = false;
+  this.id = new Date().toISOString();
 }
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-function createBookItem({ title, author, pages }) {
+function onRemoveBook(e) {
+  const bookId = e.currentTarget.dataset.bookId;
+
+  myLibrary = myLibrary.filter((book) => book.id !== bookId);
+  displayBooks();
+}
+
+function createBookItem({ title, author, pages, id }) {
   const bookItem = document.createElement("div");
   bookItem.className = "book-item";
+
+  const removeBtn = document.createElement("button");
+  removeBtn.className = "remove-btn";
+  removeBtn.ariaLabel = "remove";
+  removeBtn.title = "Remove";
+  removeBtn.dataset.bookId = id;
+  const trashIcon = document.createElement("img");
+  trashIcon.src = "assets/icons/trash.svg";
+  removeBtn.appendChild(trashIcon);
+  removeBtn.addEventListener("click", onRemoveBook);
 
   const imageCover = document.createElement("img");
   imageCover.src = "assets/images/odin-lined.png";
@@ -62,7 +80,7 @@ function createBookItem({ title, author, pages }) {
   const bookPages = document.createElement("p");
   bookPages.textContent = `${pages} pages`;
 
-  bookItem.append(imageCover, bookTitle, bookAuthor, bookPages);
+  bookItem.append(removeBtn, imageCover, bookTitle, bookAuthor, bookPages);
 
   return bookItem;
 }

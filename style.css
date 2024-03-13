@@ -299,7 +299,7 @@ h1.title {
 }
 
 .book-item {
-  /* width: 150px; */
+  position: relative;
   aspect-ratio: 1 / 1.2;
   background-color: #78350f;
   border-radius: 8px;
@@ -324,4 +324,28 @@ h1.title {
     font-weight: light;
     margin-bottom: 3px;
   }
+}
+
+.book-item > .remove-btn {
+  display: none;
+  justify-content: center;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 5px;
+  transition: all 0.25s linear;
+
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  img {
+    margin: 0;
+    width: 18px;
+    height: 18px;
+  }
+}
+.book-item:hover > .remove-btn {
+  display: flex;
 }
