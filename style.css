@@ -324,6 +324,10 @@ h1.title {
     font-weight: light;
     margin-bottom: 3px;
   }
+
+  label {
+    font-size: 12px;
+  }
 }
 
 .book-item > .remove-btn {

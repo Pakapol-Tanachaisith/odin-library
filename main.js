@@ -29,6 +29,7 @@ addForm.addEventListener("submit", (event) => {
   displayBooks();
 
   addDialog.close();
+  addForm.reset();
 });
 
 // Book Logic
@@ -53,6 +54,13 @@ function onRemoveBook(e) {
   displayBooks();
 }
 
+function toggleRead(e) {
+  const bookId = e.currentTarget.dataset.bookId;
+
+  const book = myLibrary.find((book) => book.id === bookId);
+  book.hasRead = !book.hasRead;
+}
+
 function createBookItem({ title, author, pages, id }) {
   const bookItem = document.createElement("div");
   bookItem.className = "book-item";
@@ -67,6 +75,16 @@ function createBookItem({ title, author, pages, id }) {
   removeBtn.appendChild(trashIcon);
   removeBtn.addEventListener("click", onRemoveBook);
 
+  const readCheckbox = document.createElement("input");
+  readCheckbox.type = "checkbox";
+  readCheckbox.dataset.bookId = id;
+  readCheckbox.id = "read";
+  readCheckbox.addEventListener("change", toggleRead);
+
+  const readLabel = document.createElement("label");
+  readLabel.textContent = "Read";
+  readLabel.for = "read";
+
   const imageCover = document.createElement("img");
   imageCover.src = "assets/images/odin-lined.png";
   imageCover.role = "presentation";
@@ -80,7 +98,15 @@ function createBookItem({ title, author, pages, id }) {
   const bookPages = document.createElement("p");
   bookPages.textContent = `${pages} pages`;
 
-  bookItem.append(removeBtn, imageCover, bookTitle, bookAuthor, bookPages);
+  bookItem.append(
+    removeBtn,
+    imageCover,
+    bookTitle,
+    bookAuthor,
+    bookPages,
+    readCheckbox,
+    readLabel
+  );
 
   return bookItem;
 }
