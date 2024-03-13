@@ -17,6 +17,16 @@
         Add Book
       </button>
     </section>
+
+    <section class="book-grid">
+      <!-- <div class="book-item">
+        <img src="assets/images/odin-lined.png" role="presentation">
+        <h2>Harry Potter</h2>
+        <p>J.K. Rowling</p>
+        <p>250 pages</p>
+      </div> -->
+      <p class="empty">The library is currently empty.</p>
+    </section>
   </main>
 
   <dialog class="dialog" id="add-dialog">
@@ -28,7 +38,7 @@
       <p class="title">Add new book</p>
     </div>
     <div class="content">
-      <form>
+      <form id="add-form">
         <div class="field-item">
           <label for="title">Title:</label>
           <input required autofocus type="text" name="title" id="title">
