@@ -1,15 +1,17 @@
 // Modal Logic
+class Dialog {
+  static dialog = document.querySelector("dialog#add-dialog");
+
+  static open = () => this.dialog.showModal();
+  static close = () => this.dialog.close();
+}
+
 const addDialog = document.querySelector("dialog#add-dialog");
 const addButton = document.querySelector("#add-button");
 const closeBtn = document.querySelector("dialog#add-dialog > .close-btn");
 
-addButton.addEventListener("click", () => {
-  addDialog.showModal();
-});
-
-closeBtn.addEventListener("click", () => {
-  addDialog.close();
-});
+addButton.addEventListener("click", Dialog.open);
+closeBtn.addEventListener("click", Dialog.close);
 
 // Form Logic
 const addForm = document.querySelector("form#add-form");
